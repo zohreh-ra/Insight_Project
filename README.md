@@ -14,7 +14,9 @@ Users input their feedback and the app will detect the quality of their feedback
 you can check the web app here: http://feedzer.ca/
 
 ## How Feedalyzer works?
-In this section,  I will explain how the Feedalyzer has been built.
+In this section,  I will explain how the Feedalyzer has been built. 
+
+
 
  
  
