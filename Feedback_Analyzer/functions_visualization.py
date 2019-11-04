@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+''' This .py file contains functions used for visualization'''
+
 def plot_two_Histograms(data1,data2,title_txt,file_name):
     ''' function to plot histogram of features for 2 clusters '''
     import numpy as np
