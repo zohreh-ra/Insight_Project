@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 def plot_two_Histograms(data1,data2,title_txt,file_name):
-    ''' function to plots histogram of features for 2 clusters '''
+    ''' function to plot histogram of features for 2 clusters '''
     import numpy as np
     import matplotlib.pyplot as plt
     from matplotlib.patches import Rectangle
@@ -43,7 +43,7 @@ def plot_clusters_pca(principalDf,labels):
         ax.grid()
 #----------------------------------------------------        
 def plot_explained_variances(exp_variance,cum_exp_variance):        
-    '''plot explained variances'''
+    '''function to plot explained variances'''
     import matplotlib.pyplot as plt
     
     plt.bar(range(1,10), exp_variance, alpha=0.5,align='center', label='individual explained variance')
@@ -53,6 +53,7 @@ def plot_explained_variances(exp_variance,cum_exp_variance):
     plt.show()                
 #----------------------------------------------------
 def plot_hist(data,title_txt):
+	'''function to plot histogram of features'''
     import matplotlib.pyplot as plt
     
     n, bins, patches = plt.hist(x=data, bins='auto', color='#0504aa',alpha=0.7, rwidth=0.85)
@@ -64,7 +65,7 @@ def plot_hist(data,title_txt):
     maxfreq = n.max()
 #----------------------------------------------------    
 def show_wordcloud(data, title = None):
-    '''plot wordcloud'''
+    '''function to plot wordcloud'''
     from wordcloud import WordCloud
     import matplotlib.pyplot as plt
     
@@ -80,7 +81,7 @@ def show_wordcloud(data, title = None):
     plt.show()
 #----------------------------------------------------    
 def plot_word_frequency(word_rank,word_freq,word_names):
-    '''plot frequency of word occurence'''
+    '''function to plot frequency of word occurence'''
     import matplotlib.pyplot as plt
     
     plt.title("Word Frequencies")
@@ -90,7 +91,7 @@ def plot_word_frequency(word_rank,word_freq,word_names):
     plt.show()
 #----------------------------------------------------    
 def plot_nonlog_word_frequency(word_rank,word_freq):
-    '''plot non-logarithm scatter plot of term frequencies'''
+    '''function to plot non-logarithm scatter plot of term frequencies'''
     import matplotlib.pyplot as plt
 
     plt.title("Word Frequencies")
@@ -100,7 +101,7 @@ def plot_nonlog_word_frequency(word_rank,word_freq):
     plt.show()   
 #----------------------------------------------------
 def draw_sentiment_barplot(count_values,count_id):
-    '''Draw sentiment bar plot'''
+    '''function to draw sentiment bar plot'''
     import matplotlib.pyplot as plt
     
     plt.bar(count_values, count_id)
@@ -109,7 +110,7 @@ def draw_sentiment_barplot(count_values,count_id):
     plt.show()   
 #----------------------------------------------------    
 def plot_sentimentscore_frequency(sentiment_df):
-    '''plot sentiment distribution for positive, negative, and neutral feedback'''
+    '''function to plot sentiment distribution for positive, negative, and neutral feedback'''
     import seaborn as sns
     
     for sentiment in ['negative','positive','neutral']:
