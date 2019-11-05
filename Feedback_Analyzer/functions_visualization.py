@@ -55,7 +55,7 @@ def plot_explained_variances(exp_variance,cum_exp_variance):
     plt.show()                
 #----------------------------------------------------
 def plot_hist(data,title_txt):
-	'''function to plot histogram of features'''
+    '''function to plot histogram of features'''
     import matplotlib.pyplot as plt
     
     n, bins, patches = plt.hist(x=data, bins='auto', color='#0504aa',alpha=0.7, rwidth=0.85)
