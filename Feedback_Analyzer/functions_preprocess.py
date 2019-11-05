@@ -64,6 +64,8 @@ def  clean_text(this_feedback):
 #---------------------------------------------------- 
 def ner_feedback(this_feedback):
     '''Extracting Name Entity Recognition'''
+    import spacy
+    
     nlp = spacy.load('en_core_web_sm')
     feedbackk_ents=nlp(str(this_feedback)).ents
     return [x.label_ for x in feedbackk_ents]
@@ -78,17 +80,21 @@ def remove_punctuation(this_feedback):
 def remove_stopwords(this_feedback):
     '''removing stop-words'''
     from nltk.tokenize import word_tokenize
+    from nltk.corpus import stopwords 
+    import spacy
 	
-	stopwordss = set(stopwords.words('english'))
-	nlp = spacy.load('en_core_web_sm')
-	stop_words=(nlp.Defaults.stop_words).union(stopwordss)
+    stopwordss = set(stopwords.words('english'))
+    nlp = spacy.load('en_core_web_sm')
+    stop_words=(nlp.Defaults.stop_words).union(stopwordss)
     words=word_tokenize(str(this_feedback))
     words = [w for w in words if not w in stop_words]
     return " ".join(w for w in words) 
 #---------------------------------------------------- 
 def lemmatize_with_postag(this_feedback):
     """Lemmitization with POS tag (Spacy does this by default)"""
-	nlp = spacy.load('en_core_web_sm')
+    import spacy
+    
+    nlp = spacy.load('en_core_web_sm')
     parsed_feedback= nlp(this_feedback) # Parse the sentence (tokenizing and pos tagging)
     return " ".join([token.lemma_ for token in parsed_feedback]) # Extract the lemma for each token and join
 #---------------------------------------------------- 

@@ -128,37 +128,35 @@ def plot_sentimentscore_frequency(sentiment_df):
 #----------------------------------------------------       
 def sentiment_plot(values, names):
 	'''function to plot horizontal sentiment scores for any feedback '''
-	import matplotlib.pyplot as plt
-	
-	values[0]=values[0]*100
-	values[1]=values[1]*100
-	values[2]=values[2]*100
-				
-	values_incr = [None] * 3
-	values_incr[0]=values[0]
-	values_incr[1]=values[1]+values[0]
-	values_incr[2]=values[2]+values[1]+values[0]
-					
-	label="Feedback Sentiment "
-	category_colors = plt.get_cmap('RdYlGn')(np.linspace(0.15, 0.85, len(values)))
-		
-	fig, ax = plt.subplots(figsize=(9.2, 1))
-	ax.invert_yaxis()
-	ax.xaxis.set_visible(False)
+    import matplotlib.pyplot as plt
+    	
+    values[0]=values[0]*100
+    values[1]=values[1]*100
+    values[2]=values[2]*100
+    				
+    values_incr = [None] * 3
+    values_incr[0]=values[0]
+    values_incr[1]=values[1]+values[0]
+    values_incr[2]=values[2]+values[1]+values[0]
+    					
+    label="Feedback Sentiment "
+    category_colors = plt.get_cmap('RdYlGn')(np.linspace(0.15, 0.85, len(values)))
+    		
+    fig, ax = plt.subplots(figsize=(9.2, 1))
+    ax.invert_yaxis()
+    ax.xaxis.set_visible(False)
 
-	for i, (colname, color) in enumerate(zip(names, category_colors)):
-		widths = values[i]
-		starts = values_incr[i] - widths
-		ax.barh(label, widths, left=starts, height=0.5,label=colname, color=color)
-		xcenters = starts + widths / 2
-		r, g, b, _ = color
-		text_color = 'white' if r * g * b < 0.5 else 'darkgrey'
-		#for y, (x, c) in enumerate((xcenters, widths)):
-		ax.text(xcenters, 0, str(int(round(widths,0)))+ '%', ha='center', va='center',color=text_color) #add percentage format to this
-	ax.legend(ncol=len(names), bbox_to_anchor=(0, 1),loc='lower left', fontsize='small')
-	plt.savefig('sentiment_scores_plot.png', dpi=200, bbox_inches='tight')
+    for i, (colname, color) in enumerate(zip(names, category_colors)):
+        widths = values[i]
+        starts = values_incr[i] - widths
+        ax.barh(label, widths, left=starts, height=0.5,label=colname, color=color)
+        xcenters = starts + widths / 2
+        r, g, b, _ = color
+        text_color = 'white' if r * g * b < 0.5 else 'darkgrey'
+        #for y, (x, c) in enumerate((xcenters, widths)):
+        ax.text(xcenters, 0, str(int(round(widths,0)))+ '%', ha='center', va='center',color=text_color) #add percentage format to this
+    ax.legend(ncol=len(names), bbox_to_anchor=(0, 1),loc='lower left', fontsize='small')
+    plt.savefig('sentiment_scores_plot.png', dpi=200, bbox_inches='tight')
 		
-	return fig   
-    
-    
+    return fig   
         
