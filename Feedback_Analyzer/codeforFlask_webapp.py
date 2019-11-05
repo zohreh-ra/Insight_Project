@@ -74,8 +74,8 @@ def app_output(this_feedback):
     #clean text
     cleaned_feedback = clean_text(this_feedback) 
     	
-	##---------------------------------------------------------------------
-	##---------------Preparing feature set -------------------------------------------------------
+    ##---------------------------------------------------------------------
+    ##---------------Preparing feature set -------------------------------------------------------
     feature_topredict=[ner_count_feedback,normalized_count_determiner,normalized_stopwords_count,Norm_avg_num_characters]
     model_dv = gensim.models.doc2vec.Doc2Vec.load('doc2vec_saved')  # load the previously saved doc2vec model, that is already there
     doc2vec_thisfeed = model_dv.infer_vector(cleaned_feedback.split(" ")) # infer vector of document for this feedback from saved doc2vec model
@@ -98,7 +98,7 @@ def app_output(this_feedback):
     	quality_text= " Awesome! your feedback is specific." 
     	#quality_text= " your feedback is" + start+ "vague!"+ end+ "Please try to be more specific."
     	   
-	#------------display sentiment analysis output and its plot-----------   
+    #------------display sentiment analysis output and its plot-----------   
     sid = SentimentIntensityAnalyzer()
     thisfeed_sentiments = sid.polarity_scores(this_feedback)
     names=[]
