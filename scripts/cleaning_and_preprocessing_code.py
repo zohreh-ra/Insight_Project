@@ -266,6 +266,9 @@ tf_idf_matrix_test.to_csv(r'C:\Users\Bahareh\Documents\Insight_Program\Sown to G
 documents_train = [TaggedDocument(doc, [i]) for i, doc in enumerate(feedback_train_data['Feedback_clean'].apply(lambda x: x.split(" ")))]
 # train a Doc2Vec model text data and transform document into a vector data
 model = Doc2Vec(documents_train, vector_size=512, window=2, min_count=1, workers=4) # different vector_size and window_size to be considered
+len(model.docvecs) #12517
+#train doc2vec model and save it to use for inferring other feedback's doc2vec matrix (for future prediction in webapp)
+model.save('doc2vec_saved') 
 doc2vec_feedback_train = feedback_train_data['Feedback_clean'].apply(lambda x: model.infer_vector(x.split(" "))).apply(pd.Series)
 doc2vec_feedback_train.columns = ["doc2vec_vector_" + str(x) for x in doc2vec_feedback_train.columns]
 # create doc2vec vector columns for Test set
